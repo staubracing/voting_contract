@@ -10,8 +10,8 @@ This is a voting contract that allows users to vote for candidates and delegates
 - Delegates can vote on behalf of others
 - Candidates are the options in the voting contract
 
-##Contributing
+## Contributing
 Contributions are welcome! Please submit a pull request or open an issue if you find a bug or have a feature request.
 
-##License
+## License
 This project is licensed under the MIT License - see the LICENSE file for details.
