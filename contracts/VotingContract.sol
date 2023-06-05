@@ -43,21 +43,9 @@ contract Voting {
         for (uint i = 0; i < proposalNames.length; i++) {
             /// @notice `Proposal({...})` creates a temporary Proposal object and `proposals.push(...)`
             /// @notice appends it to the end of `proposals`.
-            proposals.push(Proposal({
-                name: proposalNames[i],
-                voteCount: 0
-            }));
+            proposals.push(Proposal({name: proposalNames[i], voteCount: 0}));
         }
-    }
-
-        
-
-
-
-
-
-
-
+    } // end constructor
 
     
 } // end contract Voting
