@@ -17,7 +17,7 @@ contract Voting {
     }
     /// @notice This is a type for a single voter.
     struct Voter {
-        uint weight;
+        uint8 weight;
         bool voted;
         address delegate;
         uint vote;
@@ -47,5 +47,18 @@ contract Voting {
         }
     } // end constructor
 
-    
+    /// @notice Give `voter` the right to vote on this ballot.
+    /// @notice May only be called by `chairperson`.
+    function giveRightToVote(address voter) external {
+        /// @notice If the first argument of `require` evaluates to `false`, execution terminates and all changes to the state and to
+        /// @notice Ether balances are reverted.
+        /// @notice This used to consume all gas in old EVM versions, but not anymore.
+        /// @notice It is often a good idea to use `require` to check if functions are called correctly.
+        /// @notice As a second argument, you can also provide an explanation about what went wrong.
+        require(msg.sender == chairperson, "Only chairperson can give right to vote.");
+        require(!voters[voter].voted, "The voter already voted.");
+        require(voters[voter].weight == 0);
+        voters[voter].weight = 1;
+    } // end function giveRightToVote
+
 } // end contract Voting
