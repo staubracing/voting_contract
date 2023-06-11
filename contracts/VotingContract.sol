@@ -75,7 +75,7 @@ contract Voting {
             require(to != msg.sender, "Found loop in delegation."); // check if there is a loop in delegation
         }
 
-        voter storage delegate_ = voters[to]; // assigns reference to delegate of sender (to)
+        Voter storage delegate_ = voters[to]; // assigns reference to delegate of sender (to)
 
         require(delegate_.weight >= 1); // check if delegate has right to vote
         
