@@ -64,7 +64,7 @@ contract Voting {
 
     /// @notice Delegate your vote to the voter `to`.
     function delegate(address to) external {
-        Voter storage sender = voters[msg.sender]; // assigns reference
+        Voter storage sender = voters[msg.sender]; // assigns reference to sender (msg.sender)
         require(sender.weight != 0, "Has no right to vote."); // check if sender has right to vote
         require(!sender.voted, "Already voted."); // check if sender already voted
 
@@ -89,7 +89,20 @@ contract Voting {
         }
     } // end function delegate
     
-   }
+    /// @notice Give your vote (including votes delegated to you) to proposal `proposals[proposal]`.
+    function vote(uint proposal) external {
+        Voter storage sender = voters[msg.sender];
+        require(sender.weight != 0, "Has no right to vote.");
+        require(!sender.voted, "Already voted.");
+        sender.voted = true;
+        sender.vote = proposal;
+
+        proposals[proposal].voteCount += sender.weight;
+
+    } // end function vote
+
+    
+} // end contract Voting
 
 
 
