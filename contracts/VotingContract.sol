@@ -101,6 +101,25 @@ contract Voting {
 
     } // end function vote
 
+    /// @notice Computes the winning proposal taking all previous votes into account.
+    /// @notice This function can only be called by `chairperson` after the voting period has ended.
+    /// @return winningProposal_ The index of the winning proposal in the `proposals` array.
+    function winningProposal() public view returns (uint winningProposal_) {
+        uint winningVoteCount = 0;
+        for (uint p = 0; p < proposals.length; p++) { // iterate over proposals
+            if (proposals[p].voteCount > winningVoteCount) { // check if proposal has more votes than winningVoteCount
+                winningVoteCount = proposals[p].voteCount; // set winningVoteCount to proposal voteCount
+                winningProposal_ = p; // set winningProposal_ to proposal index
+            }
+        }
+    } // end function winningProposal
+    
+    /// @notice Calls winningProposal() function to get the index of the winner contained in the proposals array and then
+    /// @notice returns the name of the winner
+    function winnerName() external view returns (bytes32 winnerName_) {
+        winnerName_ = proposals[winningProposal()].name;
+        
+    } // end function winnerName
     
 } // end contract Voting
 
