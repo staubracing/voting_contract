@@ -67,7 +67,6 @@ contract Voting {
         Voter storage sender = voters[msg.sender]; // assigns reference to sender (msg.sender)
         require(sender.weight != 0, "Has no right to vote."); // check if sender has right to vote
         require(!sender.voted, "Already voted."); // check if sender already voted
-
         require (to != msg.sender, "Self-delegation is disallowed."); // check if sender is not delegating to himself        
 
         while (voters[to].delegate != address(0)) { // check if to is delegating to someone else
