@@ -15,3 +15,9 @@ Contributions are welcome! Please submit a pull request or open an issue if you 
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+- This project was inspired by the solidity by example tutorial: https://solidity-by-example.org/app/voting/
+
+## Instructions
+
